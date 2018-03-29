@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import ListContacts from './ListContacts';
+import escapeRegExp from 'escape-string-regexp';
+import sortBy from 'sort-by';
 
 class App extends Component {
   state = {
