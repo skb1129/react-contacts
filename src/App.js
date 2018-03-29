@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import ListContacts from './ListContacts';
-import escapeRegExp from 'escape-string-regexp';
-import sortBy from 'sort-by';
 
 class App extends Component {
   state = {
@@ -33,7 +31,8 @@ class App extends Component {
 
   render() {
     return (<div>
-      <ListContacts onDeleteContact={this.removeContacts} contacts={this.state.contacts}/>
+      <ListContacts onDeleteContact={this.removeContacts}
+        contacts={this.state.contacts}/>
     </div>);
   }
 }
