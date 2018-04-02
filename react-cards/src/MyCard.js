@@ -1,36 +1,24 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import FontIcon from 'material-ui/FontIcon';
 
 class MyCard extends Component {
-  static propTypes = {
-
-  }
-
   render() {
     return (
-      <Card>
+      <Card className='card'>
         <CardHeader
-          title="URL Avatar"
-          subtitle="Subtitle"
-          avatar="images/jsa-128.jpg"
+          title={this.props.card.author}
+          avatar={this.props.card.author_url}
         />
         <CardMedia
-          overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
+          overlay={<CardTitle title={this.props.card.title} />}
         >
-          <img src="images/nature-600-337.jpg" alt="" />
+          <img className='card-img' src={this.props.card.image_url} alt={this.props.card.title} />
         </CardMedia>
-        <CardTitle title="Card title" subtitle="Card subtitle" />
-        <CardText>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-          Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-          Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-        </CardText>
+        <CardText>{this.props.card.description}</CardText>
         <CardActions>
-          <FlatButton label="Action1" />
-          <FlatButton label="Action2" />
+          <FlatButton label="Like" />
         </CardActions>
       </Card>
     );

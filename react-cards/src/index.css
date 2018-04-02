@@ -3,3 +3,20 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.cards-list {
+  max-width: 500px;
+  align-items: center;
+  margin: auto;
+}
+
+.card {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.card-img {
+  height: 50vw;
+  max-height: 250px;
+  background-color: grey;
+}
