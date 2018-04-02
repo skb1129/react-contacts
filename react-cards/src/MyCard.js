@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
-import FontIcon from 'material-ui/FontIcon';
 
 class MyCard extends Component {
   render() {
@@ -18,7 +17,7 @@ class MyCard extends Component {
         </CardMedia>
         <CardText>{this.props.card.description}</CardText>
         <CardActions>
-          <FlatButton label="Like" />
+          <FlatButton label='Like' />
         </CardActions>
       </Card>
     );
