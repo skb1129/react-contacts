@@ -1,12 +1,7 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import MyCard from './MyCard';
 
 class ListMyCards extends Component {
-  static propTypes = {
-    cards: PropTypes.array.isRequired
-  }
-
   state = {
     cards: [
       {
@@ -70,7 +65,7 @@ class ListMyCards extends Component {
   updateLikes = (card) => {
     card.likes += 1;
     this.setState((state) => ({
-      cards: state.cards.map((c) => (c.id == card.id ? card : c))
+      cards: state.cards.map((c) => (c.id === card.id ? card : c))
     }))
   }
 

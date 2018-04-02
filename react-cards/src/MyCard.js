@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 
 class MyCard extends Component {
+  static propTypes = {
+    card: PropTypes.object.isRequired,
+    updateLikes: PropTypes.func.isRequired
+  }
+
   render() {
     return (
       <Card className='card'>
