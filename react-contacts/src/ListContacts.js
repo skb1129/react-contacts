@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import escapeRegExp from 'escape-string-regexp';
-import sortBy from 'sort-by';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
+import { Link } from 'react-router-dom'
 
 class ListContacts extends Component {
   static propTypes = {
@@ -21,13 +21,13 @@ class ListContacts extends Component {
   render() {
     let showingContacts;
     if (this.state.query) {
-      const match = new RegExp(escapeRegExp(this.state.query), 'i');
-      showingContacts = this.props.contacts.filter((contact) => match.test(contact.name));
+      const match = new RegExp(escapeRegExp(this.state.query), 'i')
+      showingContacts = this.props.contacts.filter((contact) => match.test(contact.name))
     } else {
-      showingContacts = this.props.contacts;
+      showingContacts = this.props.contacts
     }
 
-    showingContacts.sort(sortBy('name'));
+    showingContacts.sort(sortBy('name'))
 
     return (
     <div className='list-contacts'>
@@ -56,8 +56,8 @@ class ListContacts extends Component {
           </li>))
         }
       </ol>
-    </div>);
+    </div>)
   }
 }
 
-export default ListContacts;
+export default ListContacts
