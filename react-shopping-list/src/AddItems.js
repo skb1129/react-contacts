@@ -61,7 +61,9 @@ class AddItems extends Component {
               'Quantity and Unit Cost must be a whole number'
             ]}
           />
-          <Button type='submit' disabled={!this.state.name || !this.state.quantity || !this.state.cost}>Submit</Button>
+          <Button type='submit'
+            disabled={!this.state.name || !this.state.quantity || !this.state.cost}>
+            Submit</Button>
         </Form>
       </Segment>
     );
