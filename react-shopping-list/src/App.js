@@ -34,7 +34,7 @@ class App extends Component {
       <div>
         <AddItems addItems={this.addItems}></AddItems>
         <ListItems items={this.state.items} removeItem={this.removeItem}></ListItems>
-        <TotalCost></TotalCost>
+        <TotalCost items={this.state.items}></TotalCost>
       </div>
     );
   }
