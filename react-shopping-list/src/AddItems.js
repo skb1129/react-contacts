@@ -15,12 +15,12 @@ class AddItems extends Component {
       <Segment inverted>
         <Form inverted onSubmit={this.handleSubmit}>
           <Header as='h3' inverted>Add New Items:</Header>
-          <Form.Group>
-            <Form.Input label='Item Name' name='name' placeholder='Item Name' width={6} required />
-            <Form.Input label='Quantity' name='quantity' placeholder='Quantity' type='number' min={1} width={3} required />
-            <Form.Input label='Unit Cost' name='cost' placeholder='Unit Cost' type='number' min={0} width={3} required />
-            <Button primary width={2}>Add</Button>
+          <Form.Group widths='equal'>
+            <Form.Input label='Item Name' name='name' placeholder='Item Name' required />
+            <Form.Input label='Quantity' name='quantity' placeholder='Quantity' type='number' min={1} required />
+            <Form.Input label='Unit Cost' name='cost' placeholder='Unit Cost' type='number' min={0} required />
           </Form.Group>
+          <Button type='submit'>Submit</Button>
         </Form>
       </Segment>
     );
