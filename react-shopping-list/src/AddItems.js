@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import { Form, Header, Button, Segment } from 'semantic-ui-react';
+import { Form, Header, Button, Segment, Message } from 'semantic-ui-react';
 
 class AddItems extends Component {
   state = {
     name: '',
     quantity: '',
     cost: ''
+  }
+
+  validateInputs = () => {
+    return (
+      /^[a-zA-Z ]+$/.test(this.state.name) &&
+      /^[1-9][0-9]*$/.test(this.state.quantity) &&
+      /^[1-9][0-9]*$/.test(this.state.cost)
+    )
   }
 
   handleChange = (e) => {
@@ -16,13 +24,18 @@ class AddItems extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.props.addItems)
-      this.props.addItems(this.state);
-    this.setState({
-      name: '',
-      quantity: '',
-      cost: ''
-    });
+    if (this.validateInputs()) {
+      e.target.classList.remove('warning');
+      if (this.props.addItems)
+        this.props.addItems(this.state);
+      this.setState({
+        name: '',
+        quantity: '',
+        cost: ''
+      });
+    } else {
+      e.target.classList.add('warning');
+    }
   }
 
   render() {
@@ -40,6 +53,14 @@ class AddItems extends Component {
               type='number' value={this.state.cost}
               onChange={this.handleChange}/>
           </Form.Group>
+          <Message
+            warning
+            header='Could you check something!'
+            list={[
+              'The item name must only contain alphabets',
+              'Quantity and Unit Cost must be a whole number'
+            ]}
+          />
           <Button type='submit' disabled={!this.state.name || !this.state.quantity || !this.state.cost}>Submit</Button>
         </Form>
       </Segment>
