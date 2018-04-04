@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Header, Button } from 'semantic-ui-react';
+import { Form, Header, Button, Segment } from 'semantic-ui-react';
 import serializeForm from 'form-serialize';
 
 class AddItems extends Component {
@@ -12,15 +12,17 @@ class AddItems extends Component {
 
   render() {
     return(
-      <Form onSubmit={this.handleSubmit}>
-        <Header as='h3'>Add New Items:</Header>
-        <Form.Group>
-          <Form.Input name='name' placeholder='Item Name' width={6} required />
-          <Form.Input name='quantity' placeholder='Quantity' type='number' min={1} width={3} required />
-          <Form.Input name='cost' placeholder='Unit Cost' type='number' min={0} width={3} required />
-          <Button primary width={2}>Add</Button>
-        </Form.Group>
-      </Form>
+      <Segment inverted>
+        <Form inverted onSubmit={this.handleSubmit}>
+          <Header as='h3' inverted>Add New Items:</Header>
+          <Form.Group>
+            <Form.Input label='Item Name' name='name' placeholder='Item Name' width={6} required />
+            <Form.Input label='Quantity' name='quantity' placeholder='Quantity' type='number' min={1} width={3} required />
+            <Form.Input label='Unit Cost' name='cost' placeholder='Unit Cost' type='number' min={0} width={3} required />
+            <Button primary width={2}>Add</Button>
+          </Form.Group>
+        </Form>
+      </Segment>
     );
   }
 }
