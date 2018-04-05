@@ -21,6 +21,18 @@ class AddItems extends Component {
     )
   }
 
+  validateName = () => {
+    return !(/^[a-zA-Z ]+$/.test(this.state.name) || this.state.name === '')
+  }
+
+  validateQuantity = () => {
+    return !(/^[1-9][0-9]*$/.test(this.state.quantity) || this.state.quantity === '')
+  }
+
+  validateCost = () => {
+    return !(/^[1-9][0-9]*$/.test(this.state.cost) || this.state.cost === '')
+  }
+
   handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -44,13 +56,13 @@ class AddItems extends Component {
           <Header as='h3' inverted>Add New Items:</Header>
           <Form.Group widths='equal'>
             <Form.Input label='Item Name' name='name' placeholder='Item Name'
-              value={this.state.name} onChange={this.handleChange}/>
+              value={this.state.name} onChange={this.handleChange} error={this.validateName()}/>
             <Form.Input label='Quantity' name='quantity' placeholder='Quantity'
               type='number' value={this.state.quantity}
-              onChange={this.handleChange}/>
+              onChange={this.handleChange} error={this.validateQuantity()}/>
             <Form.Input label='Unit Cost' name='cost' placeholder='Unit Cost'
               type='number' value={this.state.cost}
-              onChange={this.handleChange}/>
+              onChange={this.handleChange} error={this.validateCost()}/>
           </Form.Group>
           <Button type='submit'
             disabled={!this.validateInputs()}>
