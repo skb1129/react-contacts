@@ -52,9 +52,9 @@ class AddItems extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     let item = {
-      name: this.state.name,
-      quantity: this.state.quantity,
-      cost: this.state.cost
+      name: this.state.name.trim(),
+      quantity: this.state.quantity.trim(),
+      cost: this.state.cost.trim()
     };
     this.props.addItems(item);
   }
