@@ -20,7 +20,8 @@ function ListItems(props) {
             <Table.Cell>{item.name}</Table.Cell>
             <Table.Cell>{item.quantity}</Table.Cell>
             <Table.Cell>{item.cost}</Table.Cell>
-            <Table.Cell textAlign='right'><Icon link name='delete' onClick={() => (props.removeItem(item))} /></Table.Cell>
+            <Table.Cell textAlign='right'><Icon link name='delete'
+              onClick={() => (props.removeItem(item))} /></Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>

@@ -18,7 +18,8 @@ class TotalCost extends Component {
   render() {
     return(
       <Segment inverted>
-        <Header as='h4' inverted color='grey'>Total Cost : ₹{this.calcTotalCost(this.props.items)}</Header>
+        <Header as='h4' inverted color='grey'>
+          Total Cost : ₹{this.calcTotalCost(this.props.items)}</Header>
       </Segment>
     );
   }

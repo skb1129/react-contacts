@@ -33,7 +33,8 @@ class App extends Component {
     return (
       <div>
         <AddItems addItems={this.addItems}></AddItems>
-        <ListItems items={this.state.items} removeItem={this.removeItem}></ListItems>
+        <ListItems items={this.state.items}
+          removeItem={this.removeItem}></ListItems>
         <TotalCost items={this.state.items}></TotalCost>
       </div>
     );

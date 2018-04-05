@@ -26,7 +26,8 @@ class AddItems extends Component {
   }
 
   validateQuantity = () => {
-    return !(/^[1-9][0-9]*$/.test(this.state.quantity) || this.state.quantity === '')
+    return !(/^[1-9][0-9]*$/.test(this.state.quantity) ||
+    this.state.quantity === '')
   }
 
   validateCost = () => {
@@ -56,7 +57,8 @@ class AddItems extends Component {
           <Header as='h3' inverted>Add New Items:</Header>
           <Form.Group widths='equal'>
             <Form.Input label='Item Name' name='name' placeholder='Item Name'
-              value={this.state.name} onChange={this.handleChange} error={this.validateName()}/>
+              value={this.state.name} onChange={this.handleChange}
+              error={this.validateName()}/>
             <Form.Input label='Quantity' name='quantity' placeholder='Quantity'
               type='number' value={this.state.quantity}
               onChange={this.handleChange} error={this.validateQuantity()}/>
@@ -68,7 +70,6 @@ class AddItems extends Component {
             disabled={!this.validateInputs()}>
             Submit</Button>
         </Form>
-        {JSON.stringify(this.state)}
       </Segment>
     );
   }
