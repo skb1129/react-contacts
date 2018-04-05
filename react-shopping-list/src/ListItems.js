@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 function ListItems(props) {
   return(
@@ -25,6 +26,11 @@ function ListItems(props) {
       </Table.Body>
     </Table>
   );
+}
+
+ListItems.propTypes = {
+  items: PropTypes.array.isRequired,
+  removeItem: PropTypes.func.isRequired
 }
 
 export default ListItems;

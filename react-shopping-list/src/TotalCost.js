@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { Header, Segment } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 class TotalCost extends Component {
+  static propTypes = {
+    items: PropTypes.array.isRequired
+  }
+
   calcTotalCost = (items) => {
     let total = 0;
     for (let item of items) {

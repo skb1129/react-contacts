@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { Form, Header, Button, Segment, Message } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 class AddItems extends Component {
+  static propTypes = {
+    addItems: PropTypes.func.isRequired
+  }
+
   state = {
     name: '',
     quantity: '',
