@@ -7,6 +7,17 @@ class TotalCost extends Component {
     items: PropTypes.array.isRequired
   }
 
+  static defaultProps = {
+    items: [
+      {
+        id: 1,
+        name: 'Milk',
+        quantity: 5,
+        cost: 20
+      }
+    ]
+  }
+
   calcTotalCost = (items) => {
     let total = 0;
     for (let item of items) {
