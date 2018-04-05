@@ -34,4 +34,15 @@ ListItems.propTypes = {
   removeItem: PropTypes.func.isRequired
 }
 
+ListItems.defaultProps = {
+  items: [
+    {
+      id: 1,
+      name: 'Milk',
+      quantity: 5,
+      cost: 20
+    }
+  ]
+}
+
 export default ListItems;

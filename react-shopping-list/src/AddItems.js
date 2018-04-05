@@ -10,42 +10,51 @@ class AddItems extends Component {
   state = {
     name: '',
     quantity: '',
-    cost: ''
+    cost: '',
+    name_err: false,
+    quantity_err: false,
+    cost_err: false,
+    button_disabled: true
   }
 
-  validateInputs = () => {
-    return (
-      /^[a-zA-Z ]+$/.test(this.state.name) &&
-      /^[1-9][0-9]*$/.test(this.state.quantity) &&
-      /^[1-9][0-9]*$/.test(this.state.cost)
-    )
-  }
-
-  validateName = () => {
-    return !(/^[a-zA-Z ]+$/.test(this.state.name) || this.state.name === '')
-  }
-
-  validateQuantity = () => {
-    return !(/^[1-9][0-9]*$/.test(this.state.quantity) ||
-    this.state.quantity === '')
-  }
-
-  validateCost = () => {
-    return !(/^[1-9][0-9]*$/.test(this.state.cost) || this.state.cost === '')
+  validate = (name, value) => {
+    let ne = this.state.name_err;
+    let qe = this.state.quantity_err;
+    let ce = this.state.cost_err;
+    switch (name) {
+      case 'name':
+        ne = !/^[a-zA-Z ]+$/.test(value);
+        break;
+      case 'quantity':
+        qe = !/^[1-9][0-9]*$/.test(value);
+        break;
+      case 'cost':
+        ce = !/^[1-9][0-9]*$/.test(value);
+        break;
+      default:
+        console.log('Input Name Error');
+    }
+    this.setState({
+      [name]: value,
+      name_err: ne,
+      quantity_err: qe,
+      cost_err: ce,
+      button_disabled: (ne || qe || ce) || !(this.state.name && this.state.quantity && this.state.cost)
+    });
   }
 
   handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    this.setState({ [name]: value });
+    this.validate(name, value);
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     let item = {
-      name: this.state.name,
-      quantity: this.state.quantity,
-      cost: this.state.cost
+      name: this.state.name.trim(),
+      quantity: this.state.quantity.trim(),
+      cost: this.state.cost.trim()
     };
     this.props.addItems(item);
   }
@@ -58,16 +67,16 @@ class AddItems extends Component {
           <Form.Group widths='equal'>
             <Form.Input label='Item Name' name='name' placeholder='Item Name'
               value={this.state.name} onChange={this.handleChange}
-              error={this.validateName()}/>
+              error={this.state.name_err}/>
             <Form.Input label='Quantity' name='quantity' placeholder='Quantity'
               type='number' value={this.state.quantity}
-              onChange={this.handleChange} error={this.validateQuantity()}/>
+              onChange={this.handleChange} error={this.state.quantity_err}/>
             <Form.Input label='Unit Cost' name='cost' placeholder='Unit Cost'
               type='number' value={this.state.cost}
-              onChange={this.handleChange} error={this.validateCost()}/>
+              onChange={this.handleChange} error={this.state.cost_err}/>
           </Form.Group>
           <Button type='submit'
-            disabled={!this.validateInputs()}>
+            disabled={this.state.button_disabled}>
             Submit</Button>
         </Form>
       </Segment>
