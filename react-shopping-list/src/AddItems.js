@@ -27,26 +27,10 @@ class AddItems extends Component {
     this.setState({ [name]: value })
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    if (this.validateInputs()) {
-      e.target.classList.remove('warning');
-      if (this.props.addItems)
-        this.props.addItems(this.state);
-      this.setState({
-        name: '',
-        quantity: '',
-        cost: ''
-      });
-    } else {
-      e.target.classList.add('warning');
-    }
-  }
-
   render() {
     return(
       <Segment inverted>
-        <Form inverted onSubmit={this.handleSubmit}>
+        <Form inverted onSubmit={() => (this.props.addItems(this.state))}>
           <Header as='h3' inverted>Add New Items:</Header>
           <Form.Group widths='equal'>
             <Form.Input label='Item Name' name='name' placeholder='Item Name'
@@ -67,7 +51,7 @@ class AddItems extends Component {
             ]}
           />
           <Button type='submit'
-            disabled={!this.state.name || !this.state.quantity || !this.state.cost}>
+            disabled={!this.validateInputs()}>
             Submit</Button>
         </Form>
       </Segment>
