@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-function ListItems(props) {
+const ListItems = (props) => {
   return(
     <Table celled inverted selectable unstackable>
       <Table.Header>
@@ -32,17 +32,6 @@ function ListItems(props) {
 ListItems.propTypes = {
   items: PropTypes.array.isRequired,
   removeItem: PropTypes.func.isRequired
-}
-
-ListItems.defaultProps = {
-  items: [
-    {
-      id: 1,
-      name: 'Milk',
-      quantity: 5,
-      cost: 20
-    }
-  ]
 }
 
 export default ListItems;

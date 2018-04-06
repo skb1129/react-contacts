@@ -13,19 +13,22 @@ class App extends Component {
         quantity: 5,
         cost: 20
       }
-    ]
+    ],
+    total: 100
   }
 
   addItems = (item) => {
     item.id = this.state.items.length + 1;
     this.setState((state) => ({
-      items: state.items.concat([item])
+      items: state.items.concat([item]),
+      total: state.total + (item.quantity * item.cost)
     }));
   }
 
   removeItem = (item) => {
     this.setState((state) => ({
-      items: state.items.filter((c) => (c.id !== item.id))
+      items: state.items.filter((c) => (c.id !== item.id)),
+      total: state.total - (item.quantity * item.cost)
     }));
   }
 
@@ -35,7 +38,7 @@ class App extends Component {
         <AddItems addItems={this.addItems}></AddItems>
         <ListItems items={this.state.items}
           removeItem={this.removeItem}></ListItems>
-        <TotalCost items={this.state.items}></TotalCost>
+        <TotalCost total={this.state.total}></TotalCost>
       </div>
     );
   }
