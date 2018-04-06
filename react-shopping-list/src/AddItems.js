@@ -21,15 +21,19 @@ class AddItems extends Component {
     let ne = this.state.name_err;
     let qe = this.state.quantity_err;
     let ce = this.state.cost_err;
+    let bd = this.state.button_disabled;
     switch (name) {
       case 'name':
         ne = !/^[a-zA-Z ]+$/.test(value);
+        bd = (ne || qe || ce) || !(value && this.state.quantity && this.state.cost);
         break;
       case 'quantity':
         qe = !/^[1-9][0-9]*$/.test(value);
+        bd = (ne || qe || ce) || !(this.state.name && value && this.state.cost);
         break;
       case 'cost':
         ce = !/^[1-9][0-9]*$/.test(value);
+        bd = (ne || qe || ce) || !(this.state.name && this.state.quantity && value);
         break;
       default:
         console.log('Input Name Error');
@@ -39,7 +43,7 @@ class AddItems extends Component {
       name_err: ne,
       quantity_err: qe,
       cost_err: ce,
-      button_disabled: (ne || qe || ce) || !(this.state.name && this.state.quantity && this.state.cost)
+      button_disabled: bd
     });
   }
 
